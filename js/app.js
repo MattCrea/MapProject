@@ -1,5 +1,5 @@
 new Vue({
-    el: '#app',
+    el: '#app', // Instance de la vue 'app'
 
     data: {
         map: null,
@@ -25,7 +25,7 @@ new Vue({
 
     mounted() {
         this.initMap(); // build init pour la carte et init des calques 
-        this.initLayers();
+        this.initLayers(); // pointeur this qui se réfère bien à l'instance actuelle
     },
 
     methods: {
@@ -34,27 +34,27 @@ new Vue({
             this.tileLayer = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/rastertiles/voyager/{z}/{x}/{y}.png',
                     {
                         maxZoom: 18,
-                        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">Map</a>, &copy; <a href="https://carto.com/attribution">Carte</a>',
+                        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">SpreadSheep</a>, &copy; <a href="https://carto.com/attribution">Carte</a>',
                     }
                 );
-            this.tileLayer.addTo(this.map);
+            this.tileLayer.addTo(this.map); // affichage de la carte source : documentation
         },
 
         initLayers() {
             this.layers.forEach((layer) =>
             {
-                layer.leafletObject = L.marker(layer.coords).bindPopup(layer.name).openPopup();
+                layer.leafletObject = L.marker(layer.coords).bindPopup(layer.name).openPopup(); // affectation de l'objet 'marker' en fonction du layer, affectation coordonnées + popup + auto openPopup
             });
-        },// méthodes exécutées 
+        },
         layerChanged(layerId,active) {
-            const layer = this.layers.find(layer => layer.id === layerId);
+            const layer = this.layers.find(layer => layer.id === layerId); // déclaration layer en fonction du layer.id cliqué
                 if (active) 
                 {
-                    layer.leafletObject.addTo(this.map);
+                    layer.leafletObject.addTo(this.map); // si active == true donc onChanged -> Set marker
                 } 
                 else 
                 {
-                    layer.leafletObject.removeFrom(this.map);
+                    layer.leafletObject.removeFrom(this.map); // sinon si active == false -> unset marker (Par défaut le mode active d'un layer == false) 
                 }
         }, 
     },
