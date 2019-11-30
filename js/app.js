@@ -43,7 +43,7 @@ new Vue({
         initLayers() {
             this.layers.forEach((layer) =>
             {
-                layer.leafletObject = L.marker(layer.coords).bindPopup(layer.name).openPopup(); // affectation de l'objet 'marker' en fonction du layer, affectation coordonnées + popup + auto openPopup
+                layer.leafletObject = L.marker(layer.coords).bindPopup(layer.name).openPopup(); //  affectation de l'objet 'marker' en fonction du layer, affectation coordonnées + popup + auto openPopup
             });
         },
         layerChanged(layerId,active) {
