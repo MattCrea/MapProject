@@ -18,8 +18,7 @@ new Vue({
                 type:'marker',
                 coords: [48.852810, 2.350384],
                 active: false,
-            },
-            
+            },          
         ],
     },
 
@@ -46,6 +45,7 @@ new Vue({
                 layer.leafletObject = L.marker(layer.coords).bindPopup(layer.name).openPopup(); //  affectation de l'objet 'marker' en fonction du layer, affectation coordonnées + popup + auto openPopup
             });
         },
+
         layerChanged(layerId,active) {
             const layer = this.layers.find(layer => layer.id === layerId); // déclaration layer en fonction du layer.id cliqué
                 if (active) 
