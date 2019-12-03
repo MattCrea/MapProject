@@ -48,8 +48,7 @@ new Vue({
             const layer = this.layers.find(layer => layer.id === layerId); // déclaration layer en fonction du layer.id cliqué
                 if (active) 
                 {
-                    layer.leafletObject.addTo(this.map); // si active == true donc onChanged -> Set marker
-                    this.map.setView(layer.coords,14); // Ajout auto zoom quand l'utilisateur clique sur layer
+                    layer.leafletObject.addTo(this.map.setView(layer.coords,14)); // si active == true donc onChanged -> Set marker | Ajout auto zoom quand l'utilisateur clique sur layer
                 } 
                 else 
                 {
