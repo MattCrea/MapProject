@@ -31,12 +31,10 @@ new Vue({
         initMap() {
             this.map = L.map('map').setView([48.856697, 2.351462], 12);
             this.tileLayer = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/rastertiles/voyager/{z}/{x}/{y}.png',
-                    {
-                        maxZoom: 18,
-                        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">SpreadSheep</a>, &copy; <a href="https://carto.com/attribution">Carte</a>',
-                    }
-                );
-            this.tileLayer.addTo(this.map); // affichage de la carte source : documentation
+            {
+                maxZoom: 18,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">SpreadSheep</a>, &copy; <a href="https://carto.com/attribution">Carte</a>',
+            }).addTo(this.map); // affichage de la carte source : documentation
         },
 
         initLayers() {
